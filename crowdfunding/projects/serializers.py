@@ -29,7 +29,7 @@ class ProjectSerializer(serializers.Serializer):
         instance.is_open = validated_data.get('is_open', instance.is_open)
         instance.date_created = validated_data.get('date_created', instance.date_created)
         instance.owner = validated_data.get('owner', instance.owner)
-        instance.save
+        instance.save()
         return instance
 
 class ProjectDetailSerializer(ProjectSerializer):
