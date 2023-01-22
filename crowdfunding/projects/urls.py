@@ -9,4 +9,4 @@ urlpatterns = [
     path('pledges/', views.PledgeList.as_view(), name="pledge-list"),
 ]
 
-url_patterns = format_suffix_patterns(urlpatterns)
+urlpatterns = format_suffix_patterns(urlpatterns)
