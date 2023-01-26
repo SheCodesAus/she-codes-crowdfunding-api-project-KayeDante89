@@ -39,12 +39,14 @@ class ChangePasswordView(generics.UpdateAPIView):
 
     serializer_class = ChangePasswordSerializer
     model = CustomUser
+
     
     def get_object(self, queryset=None):
-        obj = self.request.user
+        obj = self.request.user()
         return obj
-    
-    def update(self, request, *args, **kwargs):
+
+    def update(self, request, pk, *args, **kwargs):
+
         self.object = self.get_object()
         serializer = self.get_serializer(data=request.data)
 
