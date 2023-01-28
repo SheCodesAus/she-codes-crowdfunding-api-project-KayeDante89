@@ -25,6 +25,8 @@ class CustomUserList(APIView):
 
 class CustomUserDetail(APIView):
 
+    # permission_classes = [IsAuthenticated,]
+
     def get_object(self, pk):
         try:
             return CustomUser.objects.get(pk=pk)
@@ -47,7 +49,7 @@ class ChangePasswordView(generics.UpdateAPIView):
         return obj
     
 
-    def update(self, request, *args, **kwargs):
+    def put(self, request, *args, **kwargs):
         self.object = self.get_object()
         serializer = ChangePasswordSerializer(data=request.data)
 

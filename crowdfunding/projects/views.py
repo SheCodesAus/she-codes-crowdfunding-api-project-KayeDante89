@@ -6,7 +6,7 @@ from rest_framework import status, generics, permissions
 
 from .models import Project, Pledge
 from .serializers import ProjectSerializer, PledgeSerializer, ProjectDetailSerializer
-from .permissions import IsOwnerOrReadOnly
+from .permissions import IsOwnerOrReadOnly, IsSupporterOrReadOnly
 
 
 # Create your views here.
@@ -43,7 +43,7 @@ class ProjectDetail(APIView):
         project = self.get_object(pk)
         serializer = ProjectDetailSerializer(project)
         return Response(serializer.data)
-    
+       
     def put(self, request, pk):
         project = self.get_object(pk)
         data = request.data
@@ -69,3 +69,14 @@ class PledgeList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(supporter=self.request.user)
+
+class PledgeDetailView(generics.RetrieveUpdateDestroyAPIView):
+
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly,
+        IsSupporterOrReadOnly
+        ]
+
+    queryset = Pledge.objects.all()
+    serializer_class = PledgeSerializer
+    
