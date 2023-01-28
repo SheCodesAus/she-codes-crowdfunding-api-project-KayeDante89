@@ -31,6 +31,7 @@ DEBUG = os.environ.get(
     'DJANGO_DEBUG',
     'False'
 ) != 'False'
+DEBUG = False
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
