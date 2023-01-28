@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import Http404
 from rest_framework import status, generics, permissions
+from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import Project, Pledge
 from .serializers import ProjectSerializer, PledgeSerializer, ProjectDetailSerializer
@@ -66,9 +67,12 @@ class PledgeList(generics.ListCreateAPIView):
 
     queryset = Pledge.objects.all()
     serializer_class = PledgeSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ["supporter",]
 
     def perform_create(self, serializer):
         serializer.save(supporter=self.request.user)
+    
 
 class PledgeDetailView(generics.RetrieveUpdateDestroyAPIView):
 
