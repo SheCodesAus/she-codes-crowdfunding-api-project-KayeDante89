@@ -10,21 +10,38 @@ from .serializers import ProjectSerializer, PledgeSerializer, ProjectDetailSeria
 from .permissions import IsOwnerOrReadOnly, IsSupporterOrReadOnly
 
 
-# Create your views here.
-class ProjectList(APIView):
+# class before is ProjectList via APIView ----
 
-    def get(self, request):
-        projects = Project.objects.all()
-        serializer = ProjectSerializer(projects, many=True)
-        return Response(serializer.data)
+
+# class ProjectList(APIView):
+
+#     def get(self, request):
+#         projects = Project.objects.all()
+#         serializer = ProjectSerializer(projects, many=True)
+#         return Response(serializer.data)
     
+#     def post(self, request):
+#         serializer = ProjectSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save(owner=request.user)
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ProjectList(generics.ListCreateAPIView):
+
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ["owner", "is_open"]
+
     def post(self, request):
         serializer = ProjectSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(owner=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
+
 class ProjectDetail(APIView):
 
     permission_classes = [
