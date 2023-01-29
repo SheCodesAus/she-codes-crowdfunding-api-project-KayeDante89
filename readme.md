@@ -58,16 +58,16 @@ This is a crowdfunding app for engaged couples to create a fundraising campaign 
 ​
 - Project
   - [X] Limit who can create
-  - [ ] Limit who can retrieve -- Not neccessary
+  - [ ] Limit who can retrieve -- Not necessary
   - [X] Limit who can update
   - [X] Limit who can delete
 - Pledge
   - [X] Limit who can create
-  - [ ] Limit who can retrieve -- Not neccessary
+  - [ ] Limit who can retrieve -- Not necessary
   - [X] Limit who can update
   - [X] Limit who can delete
 - User
-  - [ ] Limit who can retrieve -- Not neccessary
+  - [ ] Limit who can retrieve -- Not necessary
   - [X] Limit who can update
   - [X] Limit who can delete
 ​
@@ -95,9 +95,9 @@ Allows users to change old password to a new one.
 ​
 You can filter through Projects/Pledges to view by owner/supporter or whether the Project is open or not.
 ​
-- [ ] {Title Feature 3}
+- [X] Search Filter
 ​
-{{ description of feature 3 }}
+Can search key words in Title and Description
 ​
 ### External libraries used
 ​
