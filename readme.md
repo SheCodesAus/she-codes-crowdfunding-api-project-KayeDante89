@@ -115,19 +115,8 @@ Can search key words in Title and Description
 ### Step by step instructions for how to register a new user and create a new project (i.e. endpoints and body data).
 ​
 1. Create User
-​
-curl --request POST \
-  --url http://localhost:8000/users/ \
-  --header 'Authorization: Bearer ' \
-  --header 'Content-Type: application/json' \
-  --data '{
-	"username": "kflam4",
-	"email": "k4@flam.com",
-	"password": "password"
-}'
-​
-2. Sign in User
-​
+
+```shell
 curl --request POST \
   --url http://localhost:8000/api-token-auth/ \
   --header 'Authorization: Bearer undefined' \
@@ -136,9 +125,24 @@ curl --request POST \
 	"username": "admin",
   "password": "password"
 }'
+```
+
+2. Sign in User
+​
+```shell
+curl --request POST \
+  --url http://localhost:8000/api-token-auth/ \
+  --header 'Authorization: Bearer undefined' \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"username": "admin",
+  "password": "password"
+}'
+```
 ​
 3. Create Project
 ​
+```shell
 curl --request POST \
   --url http://localhost:8000/projects/ \
   --header 'Authorization: Token d1a64d3eeea1d0075e33afd074a3b3e2905197e1' \
@@ -150,5 +154,5 @@ curl --request POST \
 	"image": "https://th.bing.com/th/id/R.6c1536e2841d8ad3e8281abaa8a8e38e?rik=ZZ6K7Ny0VVexlg&riu=http%3a%2f%2fsaltlakebride.com%2fwp-content%2fuploads%2f2017%2f11%2fWedding_Venue_1.jpg&ehk=UfSL9AJuNl1K7Ex6Tk6rHm8sRdgMDx0xSCLn2vwpoNA%3d&risl=&pid=ImgRaw&r=0",
 	"is_open": "True",
 	"date_created": "2023-01-29T04:13:24.473Z"
-}
-'
+}'
+```
