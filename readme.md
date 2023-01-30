@@ -118,12 +118,13 @@ Can search key words in Title and Description
 
 ```shell
 curl --request POST \
-  --url http://localhost:8000/api-token-auth/ \
-  --header 'Authorization: Bearer undefined' \
+  --url http://localhost:8000/users/ \
+  --header 'Authorization: Bearer ' \
   --header 'Content-Type: application/json' \
   --data '{
-	"username": "admin",
-  "password": "password"
+	"username": "kflam4",
+	"email": "k4@flam.com",
+	"password": "password"
 }'
 ```
 
