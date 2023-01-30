@@ -137,7 +137,7 @@ curl --request POST \
   --header 'Content-Type: application/json' \
   --data '{
 	"username": "admin",
-  "password": "password"
+  	"password": "password"
 }'
 ```
 ​
